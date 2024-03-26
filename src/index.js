@@ -1,5 +1,6 @@
 require('dotenv').config();
 const keep_alive = require("../keep_alive.js");
+
 const { Client, IntentsBitField } = require('discord.js');
 
 const cat = new Client({
@@ -12,6 +13,8 @@ const cat = new Client({
 });
 
 const cat_variations = ["cat", "kitty", "catto", "kitten"];
+const dive_outcomes = ["🐋","🦈","🐬","🦭","🦞","🦆","🦀","🦑","🦐","🐠","🐟"];
+const dive_weights = [2, 4, 4, 5, 7.5, 7.5, 12.5, 12.5, 15, 15, 20];
 
 cat.on('ready', (c) => {
     console.log(`${c.user.username} am online nya`);
@@ -25,4 +28,34 @@ cat.on('messageCreate', (message) => {
     }
 });
 
+cat.on('interactionCreate', (interaction) => {
+    if(!interaction.isChatInputCommand()) return;
+
+    if(interaction.commandName == "ping"){
+        interaction.reply("pong");
+    }
+    
+    if(interaction.commandName == "dive"){
+        interaction.reply(`I caught this ${
+            weighted_random(dive_outcomes, dive_weights)
+        } nya!`);
+    }
+
+})
+
 cat.login(process.env.TOKEN);
+
+function weighted_random(items, weights) {
+    var i;
+
+    for (i = 1; i < weights.length; i++)
+        weights[i] += weights[i - 1];
+    
+    var random = Math.random() * weights[weights.length - 1];
+    
+    for (i = 0; i < weights.length; i++)
+        if (weights[i] > random)
+            break;
+    
+    return items[i];
+}
