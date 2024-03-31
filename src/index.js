@@ -14,7 +14,7 @@ const cat = new Client({
 
 const cat_variations = ["cat", "kitty", "catto", "kitten"];
 const dive_outcomes = ["🐋","🦈","🐬","🦭","🦞","🦆","🦀","🦑","🦐","🐠","🐟"];
-const dive_weights = [2, 4, 4, 5, 7.5, 7.5, 12.5, 12.5, 15, 15, 20];
+const dive_weights = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 cat.on('ready', (c) => {
     console.log(`${c.user.username} am online nya`);
