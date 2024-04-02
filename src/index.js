@@ -13,6 +13,7 @@ const cat = new Client({
 });
 
 const cat_variations = ["cat", "kitty", "catto", "kitten"];
+const sad_variations = [":(", "😔", "😟", "☹️", "🥺", "🥹", "😢", "😭", "😞", "sad", "cry", ":'("]
 const dive_outcomes = ["🐋","🦈","🐬","🦭","🦞","🦆","🦀","🦑","🦐","🐠","🐟"];
 const dive_weights = [1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1];
 
@@ -22,9 +23,15 @@ cat.on('ready', (c) => {
 
 cat.on('messageCreate', (message) => {
     if(message.author.bot) return;
+
     if (cat_variations.some(variation => 
         message.content.toLowerCase().includes(variation))){
         message.channel.send("nya");
+    }
+
+    if (sad_variations.some(variation => 
+        message.content.toLowerCase().includes(variation))){
+        message.channel.send("😭");
     }
 });
 
