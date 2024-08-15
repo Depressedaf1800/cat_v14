@@ -10,7 +10,11 @@ const cat = new Client({
         IntentsBitField.Flags.GuildMessages,
         IntentsBitField.Flags.MessageContent,
         IntentsBitField.Flags.DirectMessages
-    ],partials: [Partials.Channel, Partials.Message]
+    ],partials: [
+        Partials.Channel,
+        Partials.Message,
+        Partials.Reaction
+    ]
 });
 
 const cat_variations = ["cat", "kitty", "catto", "kitten"];
