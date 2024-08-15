@@ -1,15 +1,16 @@
 require('dotenv').config();
 const keep_alive = require("../keep_alive.js");
 
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, Partials } = require('discord.js');
 
 const cat = new Client({
     intents: [
         IntentsBitField.Flags.Guilds,
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildMessages,
-        IntentsBitField.Flags.MessageContent
-    ]
+        IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.DirectMessages
+    ],partials: [Partials.Channel, Partials.Message]
 });
 
 const cat_variations = ["cat", "kitty", "catto", "kitten"];
