@@ -29,8 +29,9 @@ cat.on('ready', (c) => {
 cat.on('messageCreate', (message) => {
     if(message.author.bot) return;
 
-    if (cat_variations.some(variation => 
-        message.content.toLowerCase().includes(variation))){
+    if ((cat_variations.some(variation => 
+        message.content.toLowerCase().includes(variation))) ||
+        (message.mentions.has(cat.user.id))){
         message.channel.send("nya");
     }
 
@@ -51,6 +52,10 @@ cat.on('interactionCreate', (interaction) => {
         interaction.reply(`I caught this ${
             weighted_random(dive_outcomes, dive_weights)
         } nya!`);
+    }
+
+    if(interaction.commandName == "add"){
+        interaction.reply("what nya");
     }
 
 })
