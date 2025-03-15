@@ -1,4 +1,5 @@
 require('dotenv').config();
+const weightedRandom = require('../functions/weighted_random');
 const keep_alive = require("../keep_alive.js");
 
 const { Client, IntentsBitField, Partials } = require('discord.js');
@@ -61,18 +62,3 @@ cat.on('interactionCreate', (interaction) => {
 })
 
 cat.login(process.env.TOKEN);
-
-function weighted_random(items, weights) {
-    var i;
-
-    for (i = 1; i < weights.length; i++)
-        weights[i] += weights[i - 1];
-    
-    var random = Math.random() * weights[weights.length - 1];
-    
-    for (i = 0; i < weights.length; i++)
-        if (weights[i] > random)
-            break;
-    
-    return items[i];
-}
