@@ -1,5 +1,5 @@
 require('dotenv').config();
-const weightedRandom = require('../functions/weighted_random');
+const weighted_random = require('../functions/weighted_random');
 const keep_alive = require("../keep_alive.js");
 
 const { Client, IntentsBitField, Partials } = require('discord.js');

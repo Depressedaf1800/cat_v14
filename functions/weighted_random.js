@@ -1,4 +1,4 @@
-function weightedRandom(items, weights) {
+function weighted_random(items, weights) {
     var i;
 
     for (i = 1; i < weights.length; i++)
@@ -13,4 +13,4 @@ function weightedRandom(items, weights) {
     return items[i];
 }
 
-module.exports = weightedRandom;
+module.exports = weighted_random;
