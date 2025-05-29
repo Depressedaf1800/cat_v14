@@ -3,12 +3,12 @@ const {cat_variations, sad_variations} = require("../globalValues.json");
 
 module.exports = {
     name: Events.MessageCreate,
-    execute(cat, message){
+    async execute(message){
         if(message.author.bot) return;
 
         if ((cat_variations.some(variation => 
             message.content.toLowerCase().includes(variation))) ||
-            (message.mentions.has(cat.user.id))){
+            (message.mentions.has("cat"))){
             message.channel.send("nya");
         }
 
