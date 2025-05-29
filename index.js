@@ -63,4 +63,6 @@ mongoose.connect(process.env.MONGO_SRV, {
     console.log(err);
 });
 
-cat.login(process.env.TOKEN);
+cat.login(process.env.TOKEN)
+  .then(() => console.log("Logged in successfully"))
+  .catch((err) => console.error("Error logging in:", err));
