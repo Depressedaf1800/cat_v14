@@ -8,7 +8,7 @@ module.exports = {
 
         if ((cat_variations.some(variation => 
             message.content.toLowerCase().includes(variation))) ||
-            (message.mentions.has(cat.user.id))){
+            (message.mentions.has(message.client.user.id))){
             message.channel.send("nya");
         }
 
